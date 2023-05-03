@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table
+@Table(name="CONVERT")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,6 +23,8 @@ public class Convert {
 	@GeneratedValue
 	@Column(name="METRICSID")
 	private int metricsId;
+	
+	
 	
 	@Column(name ="INCHTOMETER")
 	private double inchToMeter = 0.025;

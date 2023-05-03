@@ -28,11 +28,11 @@ public class ConvertController {
 	
 	//HttpServletRequest req,
 	
-	@GetMapping("/{fromUnit}/{toUnit}/{value}")
-	public  ResponseEntity<Object> getUnitValue(@PathVariable String fromUnit,
+	@GetMapping("/{convertedUnit}/{fromUnit}/{toUnit}/{value}")
+	public  ResponseEntity<Object> getUnitValue( @PathVariable String convertedUnit ,@PathVariable String fromUnit,
 			@PathVariable String toUnit, @PathVariable double value) {
 		
-		double toValueResult = convertService.convertedMetric(fromUnit,toUnit,value);
+		double toValueResult = convertService.convertedMetric(convertedUnit,fromUnit,toUnit,value);
 	//	double FromValueResult = convertService.convertFromMetric(fromUnit,toUnit,value);
 		//Convert temp = new Convert(tempInCelcius,tempInFahrenheit);
 		

@@ -22,20 +22,63 @@ public class LengthConverterServiceImpl implements ConvertService {
 	 double mileToMeter;
 	 double mmToMeter;
 	 double cmToMeter;
+	 
 
 	@Override
-	public double convertedMetricKmToM(String fromUnit, String toUnit, double value) {
-		if(fromUnit.equalsIgnoreCase("km")&& toUnit.equalsIgnoreCase("meter")) {
-			
-			 kmToMeter = repo.findByFromUnit_To_ToUnit(fromUnit, toUnit);
-			convertedValues = value* kmToMeter;	
-			 
-		}
-		else 
-			{
-			convertedValues = value/kmToMeter;
+	public double convertedMetric(String convertedUnit,String fromUnit, String toUnit, double value) {
 		
-			}
+		
+		switch(convertedUnit)
+		{
+		case "kmToMtr": 
+			kmToMeter = repo.findFormulaByUnit(fromUnit, toUnit);
+		     convertedValues = value* kmToMeter;	
+		 break;
+		
+		case "mtrToKm":
+		
+			convertedValues = value/kmToMeter;
+		 break;
+		 
+		case "inToMtr":
+			
+			convertedValues = value*inchToMeter;
+		 break;
+		 
+		case "mtrToIn":
+			
+			convertedValues = value/inchToMeter;
+		 break;
+		case "ftToMtr":
+			
+			convertedValues = value*footToMeter;
+		 break;
+		case "mtrToFt":
+			
+			convertedValues = value/footToMeter;
+		 break;
+		case "mleToMtr":
+			
+			convertedValues = value*mileToMeter;
+		 break;
+		 
+         case "mtrToMle":
+			
+			convertedValues = value/mileToMeter;
+		 break;
+		 
+         case "miliMtrToMtr":
+ 			
+ 			convertedValues = value*mmToMeter;
+ 		 break;
+ 		 
+         case "mtrTomiliMtr":
+ 			
+ 			convertedValues = value/mmToMeter;
+ 		 break;
+ 		 
+		 
+		}
 		return convertedValues;
 		
 	
@@ -44,7 +87,7 @@ public class LengthConverterServiceImpl implements ConvertService {
 		
 	}
 
-	@Override
+	/*@Override
 	public double convertedMetricInchToMeter(String fromUnit, String toUnit, double value) {
 		if(fromUnit.equalsIgnoreCase("inch")&& toUnit.equalsIgnoreCase("meter")) {
 			
@@ -125,5 +168,5 @@ public class LengthConverterServiceImpl implements ConvertService {
 				}
 			return convertedValues;
 	}
-
+*/
 }
